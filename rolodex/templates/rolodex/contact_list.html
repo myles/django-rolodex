@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load humanize %}
+
+{% block content %}
+<div class="row">
+  {% for object in object_list %}
+  <div class="col-sm-6">
+    <div class="card card-{{ object.contact_type }}">
+      <div class="card-block">
+        <h4 class="card-title">{{ object.name }}</h4>
+        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+      </div>
+      
+      {% if object.description %}
+      <div class="card-block">
+        <div class="card-text">
+          {{ object.description }}
+        </div>
+      </div>
+      {% endif %}
+      
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">...</li>
+      </ul>
+    
+      <div class="card-block">
+        <a href="{{ object.get_absolute_url }}" class="card-link">View</a>
+        <a href="{{ object.get_update_url }}" class="card-link">Edit</a>
+      </div>
+    
+      <div class="card-footer text-muted">Modified {{ object.modified|naturaltime }}</div>
+    </div>
+    
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

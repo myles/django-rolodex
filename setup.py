@@ -36,13 +36,13 @@ with open('README.rst', 'r') as readme_file:
     readme = readme_file.read()
 
 with open('HISTORY.rst', 'r') as history_file:
-    history = history_file.replace('.. :changelog:', '')
+    history = history_file.read().replace('.. :changelog:', '')
 
 setup(
     name='django-rolodex',
     version=version,
     description="A Django application for managing your contacts.",
-    long_description=readme + \n\n + history,
+    long_description=readme + '\n\n' + history,
     author='Myles Braithwaite',
     author_email='me@mylesbraithwaite.com',
     url='https://github.com/myles/django-rolodex',
@@ -52,6 +52,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'django-model-utils>=2.0',
+        'psycopg2==2.6.2',
     ],
     license='MIT',
     zip_safe=False,
