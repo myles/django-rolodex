@@ -47,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Djagno Rolodex'
-copyright = u'{% now 'local', '%Y' %}, {{ cookiecutter.full_name }}'
+copyright = u'2016 Myles Braithwaite'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
