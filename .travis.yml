@@ -17,3 +17,7 @@ script: coverage run --source rolodex runtests.py
 
 after_success:
   - codecov
+
+addons:
+  code_climate:
+    repo_token: c4619ed59d4c0800c2ee117306ea654157e53725e9e3a4ca7ee2a9f7b41cece7
