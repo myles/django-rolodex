@@ -1,42 +1,28 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import get_object_or_404
-from django.views.generic import (RedirectView, CreateView, DeleteView,
-                                  DetailView, UpdateView, ListView)
+from django.views import View
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .models import Contact
 
 
-class ContactDetailRedirectView(RedirectView):
-    permanent = False
-    query_string = True
-    pattern_name = 'contact_detail'
+class ContactListView(View):
+    template_name = 'rolodex/contact_list.html'
 
-    def get_redirect_url(self, *args, **kwargs):
-        contact = get_object_or_404(Contact, pk=kwargs['pk'])
-        return contact.get_absolute_url()
+    def get(self, request, *args, **kwargs):
+        contact_list = Contact.objects.all()
 
-
-class ContactCreateView(CreateView):
-
-    model = Contact
+        return render(request, self.template_name,
+                      {'object_list': contact_list})
 
 
-class ContactDeleteView(DeleteView):
+class ContactDetailView(View):
+    template_name = 'rolodex/contact_detail.html'
 
-    model = Contact
+    def get(self, request, pk, slug=None, *args, **kwargs):
+        contact = get_object_or_404(Contact, pk=pk)
 
+        if not slug or contact.slug != slug:
+            return redirect(contact.get_absolute_url())
 
-class ContactDetailView(DetailView):
-
-    model = Contact
-
-
-class ContactUpdateView(UpdateView):
-
-    model = Contact
-
-
-class ContactListView(ListView):
-
-    model = Contact
+        return render(request, self.template_name, {'object': contact})

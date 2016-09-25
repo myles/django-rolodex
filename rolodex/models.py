@@ -43,13 +43,25 @@ class Contact(TimeStampedModel):
             'slug': self.slug
         })
 
-    @models.permalink
-    def get_update_url(self):
-        return ('rolodex:contact_update', None, {
-            'pk': self.pk,
-            'slug': self.slug
-        })
+    # @models.permalink
+    # def get_update_url(self):
+    #     return ('rolodex:contact_update', None, {
+    #         'pk': self.pk,
+    #         'slug': self.slug
+    #     })
 
     @property
     def slug(self):
         return slugify(self.name)
+
+    def get_name(self):
+        if self.contact_type == 'company':
+            return "{name}".format(**self.data)
+        elif self.contact_type == 'person':
+            return "{name[first]} {name[last]}".format(**self.data)
+        else:
+            return "Unknown"
+
+    def save(self, *args, **kwargs):
+        self.name = self.get_name()
+        super(Contact, self).save(*args, **kwargs)
