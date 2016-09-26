@@ -1,0 +1,10 @@
+#!/bin/sh
+
+source `which virtualenvwrapper.sh`
+
+mkvirtualenv django-rolodex
+workon django-rolodex
+
+pip install -r requirments_dev.txt
+
+python setup.py develop
