@@ -1,6 +1,6 @@
-* django-rolodex version:
-* Django version:
-* Python version:
+* django-rolodex version: <!-- python -c "import rolodex; print(rolodex.__version__)" -->
+* Django version: <!-- python -c "import django; print(django.__version__)" -->
+* Python version: <!-- python -V -->
 * Operating System:
 
 ### Description
