@@ -50,6 +50,13 @@ class Contact(TimeStampedModel):
     #         'slug': self.slug
     #     })
 
+    # @models.permalink
+    # def get_delete_url(self):
+    #     return ('rolodex:contact_delete', None, {
+    #         'pk': self.pk,
+    #         'slug': self.slug
+    #     })
+
     @property
     def slug(self):
         return slugify(self.name)

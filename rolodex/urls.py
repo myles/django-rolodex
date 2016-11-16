@@ -16,9 +16,9 @@ urlpatterns = [
         view=views.ContactDetailView.as_view(),
         name='contact_detail'),
 
-    # url(regex=r"^contact/~create/$",
-    #     view=views.ContactCreateView.as_view(),
-    #     name='contact_create'),
+    url(regex=r"^contact/~create-(?P<contact_type>[-\w]+)/$",
+        view=views.ContactCreateView.as_view(),
+        name='contact_create'),
 
     # url(regex=r"^contact/(?P<pk>\d+)-(?P<slug>[-\w]+)/~delete/$",
     #     view=views.ContactDeleteView.as_view(),

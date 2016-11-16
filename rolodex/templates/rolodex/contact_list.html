@@ -4,6 +4,17 @@
 
 {% block content %}
 <div class="row">
+  <div class="row m-t-2">
+    <div class="page-header">
+      <h1>Contacts</h1>
+
+      <p class="lead">
+        <a class="btn btn-primary" href="{% url 'rolodex:contact_create' contact_type='person' %}" role="button">Create a Person</a>
+        <a class="btn btn-primary" href="{% url 'rolodex:contact_create' contact_type='company' %}" role="button">Create a Company</a>
+      </p>
+    </div>
+  </div>
+
   {% for object in object_list %}
   <div class="col-sm-6">
     <div class="card card-{{ object.contact_type }}">
@@ -11,7 +22,7 @@
         <h4 class="card-title">{{ object.name }}</h4>
         <h6 class="card-subtitle text-muted">Support card subtitle</h6>
       </div>
-      
+
       {% if object.description %}
       <div class="card-block">
         <div class="card-text">
@@ -19,19 +30,19 @@
         </div>
       </div>
       {% endif %}
-      
+
       <ul class="list-group list-group-flush">
         <li class="list-group-item">...</li>
       </ul>
-    
+
       <div class="card-block">
         <a href="{{ object.get_absolute_url }}" class="card-link">View</a>
         <a href="{{ object.get_update_url }}" class="card-link">Edit</a>
       </div>
-    
+
       <div class="card-footer text-muted">Modified {{ object.modified|naturaltime }}</div>
     </div>
-    
+
   </div>
   {% endfor %}
 </div>

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # if your app has other dependencies that need to be added to the site
     # they should be added here
+    'crispy_forms',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -123,3 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# django-crispy-forms settings
+# http://django-crispy-forms.readthedocs.io/en/latest/
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

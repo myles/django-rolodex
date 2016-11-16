@@ -3,3 +3,7 @@ django-model-utils>=2.0
 psycopg2==2.6.2
 
 # Additional requirements go here
+
+# We are using the development branch of django-crispy-forms because it
+# supports Bootstrap v4-alpha.
+git+https://github.com/django-crispy-forms/django-crispy-forms.git@dev

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row m-t-2">
+  <div class="page-header">
+    {% if contact_type == 'person' %}
+    <h1>Create a Person</h1>
+    {% elif contact_type == 'company' %}
+    <h1>Create a Company</h1>
+    {% endif %}
+  </div>
+
+  <form action="." method="post">
+    {% crispy forms.name %}
+
+    {% for form in forms.email_address %}
+    {% crispy form %}
+    {% endfor %}
+
+    {% for form in forms.phone_number %}
+    {% crispy form %}
+    {% endfor %}
+
+    {% for form in forms.special_date %}
+    {% crispy form %}
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}
