@@ -44,7 +44,7 @@ setup(
     description="A Django application for managing your contacts.",
     long_description=readme + '\n\n' + history,
     author='Myles Braithwaite',
-    author_email='me@mylesbraithwaite.com',
+    author_email='django-rolodex@mylesbraithwaite.org',
     url='https://github.com/myles/django-rolodex',
     packages=[
         'rolodex',
